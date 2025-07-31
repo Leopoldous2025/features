@@ -2,11 +2,11 @@
   "name": "alphalens-feature-matrix",
   "private": true,
   "engines": {
-    "node": ">=20.19.0",
-    "npm": ">=9.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt prepare && nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -19,9 +19,11 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "nuxt": "^3.8.0",
-    "@types/node": "^20.10.0",
-    "prisma": "^5.7.0"
+    "@nuxt/ui": "^2.15.2",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@vueuse/nuxt": "^10.5.0",
+    "nuxt": "^3.11.2",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.4",
