@@ -8,4 +8,12 @@ restartPolicyType = "on_failure"
 
 [[deploy.variables]]
 name = "NODE_ENV"
-value = "production" 
+value = "production"
+
+[[deploy.variables]]
+name = "NODE_VERSION"
+value = "20"
+
+[[deploy.variables]]
+name = "NPM_CONFIG_LEGACY_PEER_DEPS"
+value = "true" 
