@@ -1,25 +1,42 @@
-FROM node:20-alpine
+# Stage 1: Build Stage
+FROM node:20-alpine AS builder
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files first
+# Copy package.json and package-lock.json
 COPY package*.json ./
-COPY prisma ./prisma/
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install all dependencies (including devDependencies for the build)
+RUN npm ci
 
-# Copy rest of the application
+# Copy the rest of the application source code
 COPY . .
 
-# Generate Prisma client
-RUN npx prisma generate
+# [CRITICAL FIX] Run nuxt prepare to generate all necessary types and configs
+# This is the step that was failing on all platforms
+RUN npm run postinstall
 
-# Build the application
+# Build the Nuxt application for production
 RUN npm run build
 
-# Expose port
+# Stage 2: Production Stage
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy production dependencies from the builder stage
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+# Copy the built Nuxt application output
+COPY --from=builder /app/.output ./.output
+
+# Copy Prisma schema for the production environment
+COPY --from=builder /app/prisma ./prisma
+
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"] 
+# The command to run the application
+CMD [ "node", ".output/server/index.mjs" ] 

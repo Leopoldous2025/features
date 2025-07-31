@@ -1,7 +1,0 @@
-{
-  "buildCommand": "./build.sh",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": null,
-  "outputDirectory": ".output/public"
-} 
