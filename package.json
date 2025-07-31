@@ -6,7 +6,8 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "build": "nuxt prepare && nuxt build",
+    "build": "nuxt build",
+    "build:vercel": "./build.sh",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

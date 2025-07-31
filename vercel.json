@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "./build.sh",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "nuxtjs",
+  "framework": null,
   "outputDirectory": ".output/public"
 } 
