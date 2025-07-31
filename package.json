@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "nuxt build",
+    "build:netlify": "npm ci && npx prisma generate && npx nuxt prepare && npx nuxt build",
     "build:vercel": "./build.sh",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
