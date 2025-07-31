@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  createdFeatures Feature[] @relation("FeatureCreator")
+  scores         Score[]
+  
+  @@map("users")
+}
+
+model Feature {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  createdBy User    @relation("FeatureCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  scores    Score[]
+  
+  @@map("features")
+}
+
+model Score {
+  id         String   @id @default(cuid())
+  featureId  String
+  userId     String
+  strategic  Int      // 1-5
+  impact     Int      // 1-5
+  technical  Int      // 1-5
+  market     Int      // 1-5
+  revenue    Int      // 1-5
+  compliance Int      // 1-5
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  // Relations
+  feature Feature @relation(fields: [featureId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Ensure one score per user per feature
+  @@unique([featureId, userId])
+  @@map("scores")
+} 

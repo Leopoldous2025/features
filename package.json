@@ -1,0 +1,33 @@
+{
+  "name": "alphalens-feature-matrix",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:prod": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.8.0",
+    "@types/node": "^20.10.0",
+    "prisma": "^5.7.0"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.8.4",
+    "@nuxt/ui": "^2.11.1",
+    "@vueuse/nuxt": "^10.5.0",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@prisma/client": "^5.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcryptjs": "^2.4.6"
+  }
+}

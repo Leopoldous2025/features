@@ -1,0 +1,16 @@
+export default defineNuxtRouteMiddleware(async (to) => {
+  // Skip auth check on login page
+  if (to.path === '/login') {
+    return
+  }
+
+  try {
+    const response = await $fetch<{ user: any }>('/api/auth/me')
+    
+    if (!response?.user) {
+      return navigateTo('/login')
+    }
+  } catch (error) {
+    return navigateTo('/login')
+  }
+}) 
