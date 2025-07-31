@@ -21,6 +21,6 @@ export default defineNuxtConfig({
     typeCheck: false
   },
   nitro: {
-    preset: 'vercel'
+    preset: 'netlify'
   }
 })
