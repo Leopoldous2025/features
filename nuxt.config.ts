@@ -15,5 +15,8 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'dark'
+  },
+  nitro: {
+    preset: 'netlify'
   }
 })
