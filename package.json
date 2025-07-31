@@ -21,8 +21,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.8.5",
-    "nuxt": "^3.8.4",
-    "typescript": "^4.9.5"
+    "nuxt": "^3.8.4"
   },
   "dependencies": {
     "@nuxt/ui": "^2.8.1",

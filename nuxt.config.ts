@@ -15,5 +15,27 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'dark'
+  },
+  typescript: {
+    typeCheck: false,
+    strict: false
+  },
+  vite: {
+    vue: {
+      script: {
+        defineModel: false,
+        propsDestructure: false
+      }
+    },
+    esbuild: {
+      target: 'es2022'
+    }
+  },
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'es2022'
+      }
+    }
   }
 })
