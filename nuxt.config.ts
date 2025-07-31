@@ -15,12 +15,5 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'dark'
-  },
-  typescript: {
-    strict: false,
-    typeCheck: false
-  },
-  nitro: {
-    preset: 'netlify'
   }
 })
